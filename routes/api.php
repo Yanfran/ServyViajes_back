@@ -267,3 +267,9 @@ Route::middleware('jwt.auth')->group(function () {
     });
 
 });
+
+Route::controller(PdfController::class)->group(function () {
+    Route::post('/pdf/save', 'save');
+    // Route::post('login', 'login');
+    // Route::post('logout', 'logout');
+});
