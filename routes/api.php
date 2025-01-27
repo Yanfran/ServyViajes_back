@@ -29,6 +29,7 @@ use App\Http\Controllers\Api\ResetPasswordController;
 use App\Http\Controllers\Api\ReservationsController;
 use App\Http\Controllers\Api\WebhookSiteController;
 
+use App\Http\Controllers\PdfController;
 /*
 |--------------------------------------------------------------------------
 | API Routes

@@ -31,6 +31,6 @@ class PdfController extends Controller
         //     'currency' => $validatedData['currency']
         // ]);
 
-        return response()->json(['status' => 'true'], 202);
+        return response()->json(['status' => true], 202);
     }
 }
