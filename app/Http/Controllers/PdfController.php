@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+// use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
+
+use App\Models\PdfStripe;
 
 class PdfController extends Controller
 {
@@ -30,6 +34,38 @@ class PdfController extends Controller
         //     'amount' => $validatedData['amount'],
         //     'currency' => $validatedData['currency']
         // ]);
+
+        $base64String = $request->input('file');
+        $data = explode(',', $base64String);
+        $fileContents = base64_decode($data[1]);
+
+        $extension = 'pdf'; // Predeterminado
+
+        $fileName = time() . '_file.' . $extension;
+        $filePath = public_path('assets/pdf/') . $fileName;
+
+        // Guardar el archivo en la carpeta deseada
+        file_put_contents($filePath, $fileContents);
+
+        $cupon = $request->input('cupon', '');
+
+        if($cupon == null){
+            $cupon = "";
+        }
+
+        $pdfStripe = PdfStripe::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'phone' => $request->input('phone'),
+            'file' => $fileName,
+            'number_page' => $request->input('number_page'),
+            'certification' => $request->input('certification'),
+            'apostille' => $request->input('apostille'),
+            'cupon' => $cupon,
+            'email_stripe' => $request->input('email_stripe'),
+            'transaction_stripe' => $request->input('transaction_stripe'),
+            'total' => $request->input('total'),
+        ]);
 
         return response()->json(['result' => true, 'msg' => "Realilzado exitosamente."], 202);
     }

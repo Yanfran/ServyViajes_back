@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('file');
+            $table->string('lang_o');
+            $table->string('lang_t');
             $table->string('number_page');
             $table->boolean('certification');
             $table->boolean('apostille');

@@ -27,4 +27,6 @@ class PdfStripe extends Model
         'transaction_stripe',
         'total',
     ];
+
+    protected $table = 'pdf_stripe';
 }
