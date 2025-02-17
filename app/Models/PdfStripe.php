@@ -19,6 +19,8 @@ class PdfStripe extends Model
         'email',
         'phone',
         'file',
+        'lang_o',
+        'lang_t',
         'number_page',
         'certification',
         'apostille',

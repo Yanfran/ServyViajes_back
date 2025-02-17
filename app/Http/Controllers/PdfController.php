@@ -58,6 +58,8 @@ class PdfController extends Controller
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
             'file' => $fileName,
+            'lang_o' => $request->input('lang_1'),
+            'lang_t' => $request->input('lang_2'),
             'number_page' => $request->input('number_page'),
             'certification' => $request->input('certification'),
             'apostille' => $request->input('apostille'),
